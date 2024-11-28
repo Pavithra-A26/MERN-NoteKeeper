@@ -4,9 +4,13 @@ const jwt = require('jsonwebtoken');
 const router = express.Router();
 
 const auth = (req,res,next) => {
-    const token = req.header('Authorization');
-    if(!token){
-        return res.status(401).json({message: "Access denied"});
+    const authHeader  = req.header('Authorization');
+    if(!authHeader){
+        return res.status(401).json({message: "Access denied, no token provided"});
+    }
+    const token = authHeader.split(" ")[1]; 
+    if (!token) {
+        return res.status(401).json({ message: "Token not found" });
     }
     try{
         const verified = jwt.verify(token,process.env.SECRET);
@@ -15,7 +19,7 @@ const auth = (req,res,next) => {
     }
     catch(error){
         res.status(500).json({
-            message:"error in registering user",error
+            message:"Token Expeired",error
         })
     }
 };
@@ -35,7 +39,9 @@ router.get('/',auth,async(req,res) => {
 
 //create notes
 router.post('/',auth,async(req,res) => {
+    console.log("Request body:", req.body);  
     const {title,content,category} = req.body;
+    
     try{
         const notes = new Note({title,content,category,user:req.user.id});
         await notes.save();
@@ -43,7 +49,7 @@ router.post('/',auth,async(req,res) => {
     }
     catch(error){
         res.status(500).json({
-            message:"error in registering user",error
+            message:"error in creating notes",error
         })
     }
 });

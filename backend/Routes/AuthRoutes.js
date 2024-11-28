@@ -30,20 +30,20 @@ router.post('/login',async(req,res)=>{
     try{
         const user = await User.findOne({email});
         if(!user){
-            res.status(404).json({message:"no user found"});
+            return res.status(404).json({message:"no user found"});
         }
-        const match = await bcrypt.compare(password,user.password);
+        const match = await bcrypt.compare(password, user.password);
         if(!match){
-            res.status(400).json({message:"Invalid credentials"});
+            return res.status(400).json({message:"Invalid credentials"});
         }
          
-        const token = jwt.sign({id : user_id},process.env.SECERT,{expiresIn:'1h'});
+        const token = jwt.sign({id : user._id},process.env.SECRET,{expiresIn:'1h'});
         res.json({token});
 
     }
     catch(error){
         res.status(500).json({
-            message:"error in registering user",error
+            message:"error in login user",error
         })
     }
 });

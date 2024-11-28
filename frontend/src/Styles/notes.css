@@ -1,0 +1,83 @@
+/* Styling for the notes container */
+.notes-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #89cff0, #ffb6c1); /* Same as registration page */
+    min-height: 100vh; 
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Heading for the notes section */
+.notes-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for the notes list */
+.notes-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Styling for individual note items */
+.note-item {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.note-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Styling for note title */
+.note-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for note content */
+.note-content {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+/* Styling for note category */
+.note-category {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+/* Styling for the delete button */
+.delete-button {
+    background: #ff4d4d; /* Red for delete */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background: #d32f2f; /* Darker red on hover */
+}
