@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // const API = axios.create({baseURL:'mern-note-keeper.vercel.app'});
-const API = axios.create({baseURL:'http://localhost:5000'});
+const API = axios.create({baseURL:'https://mern-notekeeper-5at7.onrender.com'});
 
 API.interceptors.request.use((req) => {
     const token = localStorage.getItem('token');
