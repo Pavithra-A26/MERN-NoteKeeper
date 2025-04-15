@@ -11,15 +11,15 @@ app.use(cors());
 app.use(bodyparser.json());
 
 const PORT = process.env.PORT;
-const MONGODB = process.env.MONGODB;
+const MONGODB = process.env.MONGO_URL;
 
 
 // DataBase connection
 mongoose.connect(MONGODB).then(()=>{
-    console.log("Database connected.....")
+    console.log("Database connected.....");
 })
 .catch((error)=>{
-    consoe.log("Error in connecting db...",error
+    console.log("Error in connecting db...",error
         
     )
 })
